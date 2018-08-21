@@ -14,7 +14,7 @@ public class LoginPageTests {
 
     WebDriver driver;
     //WebDriverWait wait;
-    String webURL = "https://dev.workmarket.com/login";
+    String webURL = "";
     String validLoginEmail = "";
     String validLoginPassword = "";
     String invalidEmail = "test@mail.com";
