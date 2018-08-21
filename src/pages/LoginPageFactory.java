@@ -60,6 +60,10 @@ public class LoginPageFactory {
         linkToWorkMarketHomepage.click();
     }
 
+    public String getErrorMessage() {
+        return errorMessage.getText();
+    }
+
     public LoginPageFactory(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this   );
