@@ -14,8 +14,9 @@ public class LoginPageTests {
 
     WebDriver driver;
     //WebDriverWait wait;
-    String validLoginEmail = "qa+candidatetest@workmarket.com";
-    String validLoginPassword = "candidate123";
+    String webURL = "https://dev.workmarket.com/login";
+    String validLoginEmail = "";
+    String validLoginPassword = "";
     String invalidEmail = "test@mail.com";
 
     @Test
@@ -53,7 +54,7 @@ public class LoginPageTests {
     public void setUp() {
         System.out.println("Initializing driver and opening browser");
         driver = utilities.DriverFactory.openBrowser("Chrome");
-        driver.get("https://dev.workmarket.com/login");
+        driver.get(webURL);
     }
 
     @AfterMethod
