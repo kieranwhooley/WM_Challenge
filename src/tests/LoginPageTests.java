@@ -15,9 +15,9 @@ import pages.TalentPageFactory;
 public class LoginPageTests {
 
     WebDriver driver;
-    String webURL = "";
-    String validLoginEmail = "";
-    String validLoginPassword = "";
+    String webURL = ""; //Enter URL for site to be tested here
+    String validLoginEmail = ""; //Enter valid email address to login here
+    String validLoginPassword = ""; //Enter valid password to login here
     String invalidEmail = "test@mail.com";
 
 

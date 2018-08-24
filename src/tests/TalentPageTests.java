@@ -12,13 +12,14 @@ import pages.LoginPageFactory;
 import pages.TalentPageFactory;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TalentPageTests {
 
     WebDriver driver;
-    String webURL = "";
-    String validLoginEmail = "";
-    String validLoginPassword = "";
+    String webURL = ""; //Enter URL for site to be tested here
+    String validLoginEmail = ""; //Enter valid email address to login here
+    String validLoginPassword = ""; //Enter valid password to login here
     String searchItem1 = "test";
 
     @Test
@@ -35,7 +36,8 @@ public class TalentPageTests {
     }
 
     @Test
-    public void getListOfSearchResults() {
+    public void testSearchResultsContainSearchTerm() {
+        boolean searchTermPresent;
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.login(validLoginEmail, validLoginPassword);
         TalentPageFactory talentPage = new TalentPageFactory(driver);
@@ -43,18 +45,21 @@ public class TalentPageTests {
         talentPage.submitSearchItem(searchItem1);
         //int numberOfRecords = talentPage.getNumberOfSearchResults();
         //System.out.println("Number of records returned: " + numberOfRecords);
-        List<WebElement> listOfSearchResults = driver.findElements(By.className("profile-card--details"));
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //List<WebElement> listOfSearchResults = driver.findElements(By.className("profile-card--details"));
         //int size = listOfSearchResults.size();
         //System.out.println(size);
-        //String first = listOfSearchResults.get(0);
-        //*[@id="search_results"]/div[1]/div[3]/h2/a
-        //*[@id="search_results"]/div[2]/div[3]/h2/a
-        for (int i = 1; i < talentPage.getNumberOfSearchResults(); i++) {
-            //ADD A WAIT
+        for (int i = 1; i <= talentPage.getNumberOfSearchResults(); i++) {
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             WebElement currentElement = driver.findElement(By.xpath("//*[@id=\"search_results\"]/div[" + i + "]/div[3]/h2/a"));
             String profileCardName = currentElement.getText();
-            System.out.println("Item: " + i + " " + profileCardName);
-            //Assert.assertTrue(profileCardName.toLowerCase().contains("test"));
+            //System.out.println("Item: " + i + " " + profileCardName);
+            if (profileCardName.toLowerCase().contains("test")){
+                searchTermPresent = true;
+                Assert.assertTrue(searchTermPresent);
+            } else {
+                System.out.println("Item number " + i + " does not contain " + "\"" + searchItem1 + "\" in Profile title" );
+            }
         }
     }
 

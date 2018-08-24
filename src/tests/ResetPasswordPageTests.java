@@ -11,11 +11,11 @@ import pages.ResetPasswordPageFactory;
 public class ResetPasswordPageTests {
 
     WebDriver driver;
-    String webURL = "";
-    String validLoginEmail = "";
-    String validLoginPassword = "";
+    String webURL = ""; //Enter URL for site to be tested here
+    String validLoginEmail = ""; //Enter valid email address to login here
+    String validLoginPassword = ""; //Enter valid password to login here
     String invalidEmail = "test@mail.com";
-    String newPassword = "";
+    String newPassword = ""; //Enter a new password here when testing the reset password functionality
 
     @Test
     public void testEmailFormatErrorMessage() {
