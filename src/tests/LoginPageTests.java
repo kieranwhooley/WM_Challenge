@@ -13,15 +13,15 @@ import pages.TalentPageFactory;
 public class LoginPageTests {
 
     WebDriver driver;
-    //WebDriverWait wait;
     String webURL = "";
     String validLoginEmail = "";
     String validLoginPassword = "";
     String invalidEmail = "test@mail.com";
 
+
     @Test
     public void testLoginWithValidCredentialsIsSuccessful() {
-        //WebDriverWait wait = new WebDriverWait(driver, 10);
+        //Test to ensure login is successful with valid credentials
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.login(validLoginEmail, validLoginPassword );
         TalentPageFactory talentPage = new TalentPageFactory(driver);
@@ -32,7 +32,7 @@ public class LoginPageTests {
 
     @Test
     public void testLoginWithInvalidCredentialsDisplaysErrorMessage() {
-        //WebDriverWait wait = new WebDriverWait(driver, 10);
+        //Test to ensure error message is displayed when invalid login credentials are used
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.login(invalidEmail, validLoginPassword );
         String errorMessage = loginPage.getErrorMessage();
@@ -42,6 +42,7 @@ public class LoginPageTests {
 
     @Test
     public void testForgotPasswordLinkOpensNewPage() {
+        //Test to ensure the link to the Reset Your Password page from the Login page works
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.clickResetPasswordLink();
         ResetPasswordPageFactory resetPasswordPage = new ResetPasswordPageFactory(driver);

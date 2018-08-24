@@ -15,7 +15,7 @@ public class LoginPageFactory {
     @FindBy (id = "login-password")
     WebElement loginPasswordField;
 
-    @FindBy (className = "mdl-button__ripple-container")
+    @FindBy (id = "login_page_button")
     WebElement loginButton;
 
     @FindBy (linkText = "Remember Me")
@@ -62,6 +62,10 @@ public class LoginPageFactory {
 
     public String getErrorMessage() {
         return errorMessage.getText();
+    }
+
+    public String getLoginButtonText() {
+        return loginButton.getText();
     }
 
     public LoginPageFactory(WebDriver driver) {

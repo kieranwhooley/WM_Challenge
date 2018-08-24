@@ -1,5 +1,6 @@
 package pages;
 
+import com.gargoylesoftware.htmlunit.javascript.host.canvas.ext.WEBGL_compressed_texture_s3tc;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,11 +13,17 @@ public class ResetPasswordPageFactory {
     @FindBy(id = "email")
     WebElement resetPasswordEmailField;
 
-    @FindBy(className = "mdl-button__ripple-container")
+    @FindBy(id = "reset-submit")
     WebElement resetPasswordButton;
 
     @FindBy(xpath = "//*[@id=\"reset-form\"]/div[2]/div/h4")
     WebElement resetPasswordTitle;
+
+    @FindBy(xpath = "//*[@id=\"reset-messages\"]/div/ul/li")
+    WebElement resetEmailFormatErrorMessage;
+
+    @FindBy(linkText = "Login")
+    WebElement loginPageLink;
 
     public void clickResetPasswordButton() {
         resetPasswordButton.click();
@@ -26,8 +33,16 @@ public class ResetPasswordPageFactory {
         resetPasswordEmailField.sendKeys(newPassword);
     }
 
+    public String getEmailFormatErrorMessage() {
+        return resetEmailFormatErrorMessage.getText();
+    }
+
     public String getResetPasswordTitle() {
         return resetPasswordTitle.getText();
+    }
+
+    public void clickLoginPageLink() {
+        loginPageLink.click();
     }
 
     public ResetPasswordPageFactory(WebDriver driver) {
