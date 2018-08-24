@@ -87,6 +87,6 @@ public class LoginPageTests {
     @AfterMethod
     public void tearDown() {
         System.out.println("Tests complete");
-        //driver.quit();
+        driver.quit();
     }
 }

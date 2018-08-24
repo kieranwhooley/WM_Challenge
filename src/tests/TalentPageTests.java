@@ -3,12 +3,15 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPageFactory;
 import pages.TalentPageFactory;
+
+import java.util.List;
 
 public class TalentPageTests {
 
@@ -32,14 +35,27 @@ public class TalentPageTests {
     }
 
     @Test
-    public void testNumberOfSearchResults() {
+    public void getListOfSearchResults() {
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.login(validLoginEmail, validLoginPassword);
         TalentPageFactory talentPage = new TalentPageFactory(driver);
         talentPage.clickFindTalentLink();
         talentPage.submitSearchItem(searchItem1);
-        int numberOfRecords = talentPage.getNumberOfSearchResults();
-        System.out.println("Number of records returned: " + numberOfRecords);
+        //int numberOfRecords = talentPage.getNumberOfSearchResults();
+        //System.out.println("Number of records returned: " + numberOfRecords);
+        List<WebElement> listOfSearchResults = driver.findElements(By.className("profile-card--details"));
+        //int size = listOfSearchResults.size();
+        //System.out.println(size);
+        //String first = listOfSearchResults.get(0);
+        //*[@id="search_results"]/div[1]/div[3]/h2/a
+        //*[@id="search_results"]/div[2]/div[3]/h2/a
+        for (int i = 1; i < talentPage.getNumberOfSearchResults(); i++) {
+            //ADD A WAIT
+            WebElement currentElement = driver.findElement(By.xpath("//*[@id=\"search_results\"]/div[" + i + "]/div[3]/h2/a"));
+            String profileCardName = currentElement.getText();
+            System.out.println("Item: " + i + " " + profileCardName);
+            //Assert.assertTrue(profileCardName.toLowerCase().contains("test"));
+        }
     }
 
     @BeforeMethod
