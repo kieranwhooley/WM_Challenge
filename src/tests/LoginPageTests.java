@@ -1,6 +1,8 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -51,6 +53,30 @@ public class LoginPageTests {
 
     }
 
+    @Test
+    public void testThatCheckboxIsChecked() {
+        //Test to make sure Remember Me checkbox is ticked when clicked
+        LoginPageFactory loginPage = new LoginPageFactory(driver);
+        loginPage.clickRememberMeCheckbox();
+        WebElement rememberMeCheckbox = driver.findElement(By.xpath("//*[@id=\"page_form\"]/div[2]/label"));
+        String checkedClass = rememberMeCheckbox.getAttribute("class");
+        System.out.println(checkedClass);
+        Assert.assertTrue(checkedClass.contains("is-checked"));
+    }
+
+    @Test
+    public void testThatCheckboxIsUnchecked() {
+        //Test to ensure Remember Me checkbox is unticked when clicked twice
+        LoginPageFactory loginPage = new LoginPageFactory(driver);
+        loginPage.clickRememberMeCheckbox();
+        loginPage.clickRememberMeCheckbox();
+        WebElement rememberMeCheckbox = driver.findElement(By.xpath("//*[@id=\"page_form\"]/div[2]/label"));
+        String checkedClass = rememberMeCheckbox.getAttribute("class");
+        System.out.println(checkedClass);
+        Assert.assertTrue(!checkedClass.contains("is-checked"));
+
+    }
+
     @BeforeMethod
     public void setUp() {
         System.out.println("Initializing driver and opening browser");
@@ -61,6 +87,6 @@ public class LoginPageTests {
     @AfterMethod
     public void tearDown() {
         System.out.println("Tests complete");
-        driver.quit();
+        //driver.quit();
     }
 }

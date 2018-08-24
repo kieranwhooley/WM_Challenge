@@ -43,7 +43,7 @@ public class ResetPasswordPageTests {
 
    /*@Test
     public void testPasswordResetWithValidEmail() {
-        //Test to submit a new password (I did not run this to avoid accidentally updated the email used)
+        //Test to submit a new password (I did not run this to avoid accidentally updating the email used)
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.clickResetPasswordLink();
         ResetPasswordPageFactory resetPasswordPage = new ResetPasswordPageFactory(driver);

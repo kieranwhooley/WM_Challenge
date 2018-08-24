@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +19,7 @@ public class LoginPageFactory {
     @FindBy (id = "login_page_button")
     WebElement loginButton;
 
-    @FindBy (linkText = "Remember Me")
+    @FindBy (xpath = "//*[@id=\"page_form\"]/div[2]/label/span[4]")
     WebElement rememberMeCheckbox;
 
     @FindBy (id = "reset-password")
