@@ -37,6 +37,7 @@ public class TalentPageTests {
 
     @Test
     public void testSearchResultsContainSearchTerm() {
+        //Test to check search results based on keyword entered as search term
         boolean searchTermPresent;
         LoginPageFactory loginPage = new LoginPageFactory(driver);
         loginPage.login(validLoginEmail, validLoginPassword);
