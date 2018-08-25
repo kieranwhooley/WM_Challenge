@@ -12,8 +12,11 @@ Java 9.0.1\
 Selenium 3.14.0\
 TestNG
 
-You should also download the Chrome, Firefox and IE drivers for Selenium. Save these locally and then put the folder location you saved them in into the src/utilities/DriverFactory file. Replace "C:\\QA_Challenge\\Software\\.." with the location you have saved the files locally. This DriverFactory will allow you to test the 
-application across multilple browsers.
+Browsers:
+---------
+I ran these tests against Chrome Version 68.0.3440.106 (Official Build) (64-bit)
+
+However I also created a DriverFactory file to allow you to test the application across multilple browsers. To use this you should download the Chrome, Firefox and IE drivers for Selenium. Save these locally and then put the folder location you saved them in into the src/utilities/DriverFactory file. Replace "C:\\QA_Challenge\\Software\\.." with the location you have saved the files locally.
 
 Selenium Drivers:
 -----------------
@@ -23,10 +26,6 @@ geckodriver\
 IEDriverServer
 
 These can be downloaded from here: https://www.seleniumhq.org/download/
-
-Browsers:
----------
-I ran these tests against Chrome Version 68.0.3440.106 (Official Build) (64-bit)
 
 Running the tests:
 ------------------
